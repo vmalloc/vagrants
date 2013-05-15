@@ -1,0 +1,21 @@
+# -*- mode: ruby -*-
+# vi: set ft=ruby :
+
+Vagrant::Config.run do |config|
+  config.vm.define :local do |client_config|
+      client_config.vm.box = "precise64"
+      client_config.vm.box_url = "http://files.vagrantup.com/precise64.box"
+      client_config.vm.host_name = "local"
+      #client_config.vm.provision :shell, :path => "_vagrant/setup_netem.sh"
+      client_config.vm.network :hostonly, "192.168.1.10"
+  end
+
+  config.vm.define :remote do |server_config|
+      server_config.vm.box = "precise64"
+      server_config.vm.box_url = "http://files.vagrantup.com/precise64.box"
+      server_config.vm.host_name = "remote"
+      server_config.vm.provision :shell, :path => "_vagrant/setup_netem.sh"
+      server_config.vm.network :hostonly, "192.168.1.11"
+  end
+
+end
