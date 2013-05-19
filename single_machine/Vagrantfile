@@ -1,0 +1,10 @@
+# -*- mode: ruby -*-
+# vi: set ft=ruby :
+
+Vagrant::Config.run do |config|
+  config.vm.define :vm do |vm_config|
+      vm_config.vm.box = "precise64"
+      vm_config.vm.box_url = "http://files.vagrantup.com/precise64.box"
+      vm_config.vm.host_name = "vm"
+  end
+end
