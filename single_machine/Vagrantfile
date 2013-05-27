@@ -6,5 +6,7 @@ Vagrant::Config.run do |config|
       vm_config.vm.box = "precise64"
       vm_config.vm.box_url = "http://files.vagrantup.com/precise64.box"
       vm_config.vm.host_name = "vm"
+      vm_config.vm.provision :shell, :path => "_vagrant/setup_rpyc.sh"
+      vm_config.vm.forward_port 10001, 18812
   end
 end
